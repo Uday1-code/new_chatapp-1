@@ -1,0 +1,28 @@
+version: 0.0
+
+os: windows
+
+files:
+- source: /
+destination: new_chatapp1/new_chatapp/fundoo/fundooapp
+
+hooks:
+ BeforeInstall:
+- location:new_chatapp1/new_chatapp/requirements.txt
+
+ AfterInstall:
+	- location: new_chatapp1/new_chatapp/fundoo/fundooapp/views.py
+	  timeout :  300
+	- location: new_chatapp1/new_chatapp/fundoo/fundooapp/forms.py
+	  timeout : 300
+	- location: new_chatapp1/new_chatapp/fundoo/fundooapp/tokens.py
+	  timeout : 300
+
+Application start :
+
+	- location: new_chatapp1/new_chatapp/fundoo/fundooapp/templates/index.html
+	  timeout : 300
+	- location: new_chatapp1/new_chatapp/fundoo/fundooapp/templates/login.html
+	  timeout : 300
+	- location: new_chatapp1/new_chatapp/fundoo/fundooapp/templates/signup.html
+	  timeout : 300
